@@ -2,7 +2,10 @@
 /* eslint-disable @next/next/no-img-element */
 
 import type { NextPage } from 'next'
+import React from 'react'
 import { BaseLayout, NftList } from '../components'
+import nfts from "../content/meta.json"
+import { NtfMeta } from '../types/nft'
 
 const Home: NextPage = () => {
   return (
@@ -18,7 +21,7 @@ const Home: NextPage = () => {
               Mint a NFT to get unlimited ownership forever!
             </p>
           </div>
-          <NftList />
+          <NftList nfts={nfts as Array<NtfMeta>} />
         </div>
       </div>
     </BaseLayout>

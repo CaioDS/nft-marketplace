@@ -1,11 +1,31 @@
+import React from "react";
+import { NtfMeta } from "../../../types/nft";
+
+interface NftItemProps {
+    item: NtfMeta
+}
+
 /* eslint-disable @next/next/no-img-element */
-const NftItem = () => {
+
+const NftItem = ({ item }: NftItemProps) => {
+
+    function handleNftAttributes() {
+        return item.attributes.map((attributes, index) => {
+            return (
+                <div key={index} className="flex flex-col px-4 pt-4">
+                    <dt className="order-2 text-sm font-medium text-gray-500">{attributes.trait_type}</dt>
+                    <dd className="order-1 text-xl font-extrabold text-indigo-600">{attributes.value}</dd>
+                </div>
+            );
+        });
+    }
+
     return (
         <>
             <div className="flex-shrink-0">
                 <img
                     className={`h-full w-full object-cover`}
-                    src={"https://eincode.mypinata.cloud/ipfs/QmaQYCrX9Fg2kGijqapTYgpMXV7QPPzMwGrSRfV9TvTsfM/Creature_1.png"}
+                    src={item.image}
                     alt="New NFT"
                 />
             </div>
@@ -15,8 +35,8 @@ const NftItem = () => {
                         Creatures NFT
                     </p>
                     <div className="block mt-2">
-                        <p className="text-xl font-semibold text-gray-900">Eincode Creature #1</p>
-                        <p className="mt-3 mb-3 text-base text-gray-500">Fierce violet creature. Very durable and tanky.</p>
+                        <p className="text-xl font-semibold text-gray-900">{item.name}</p>
+                        <p className="mt-3 mb-3 text-base text-gray-500">{item.description}</p>
                     </div>
                 </div>
                 <div className="overflow-hidden mb-4">
@@ -26,19 +46,12 @@ const NftItem = () => {
                             <dd className="order-1 text-xl font-extrabold text-indigo-600">
                                 <div className="flex justify-center items-center">
                                     100
-                                    {/* <img className="h-6" src="/images/small-eth.webp"/> */}
-                                    ETH
+                                    <img className="h-6" src="/images/small-eth.webp" alt="ether icon" />
+
                                 </div>
                             </dd>
                         </div>
-                        <div className="flex flex-col px-4 pt-4">
-                            <dt className="order-2 text-sm font-medium text-gray-500">Health</dt>
-                            <dd className="order-1 text-xl font-extrabold text-indigo-600">100</dd>
-                        </div>
-                        <div className="flex flex-col px-4 pt-4">
-                            <dt className="order-2 text-sm font-medium text-gray-500">Attack</dt>
-                            <dd className="order-1 text-xl font-extrabold text-indigo-600">40</dd>
-                        </div>
+                        {handleNftAttributes()}
                     </dl>
                 </div>
                 <div>
