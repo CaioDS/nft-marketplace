@@ -1,5 +1,5 @@
 import React from "react";
-import { NtfMeta } from "../../../types/nft";
+import { NtfMeta } from "../../../../types/nft";
 import NftItem from "../Item";
 
 /* eslint-disable @next/next/no-img-element */

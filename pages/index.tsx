@@ -3,9 +3,9 @@
 
 import type { NextPage } from 'next'
 import React from 'react'
-import { BaseLayout, NftList } from '../components'
+import { BaseLayout, NftList } from '@ui'
 import nfts from "../content/meta.json"
-import { NtfMeta } from '../types/nft'
+import { NtfMeta } from '@_types/nft'
 
 const Home: NextPage = () => {
   return (
