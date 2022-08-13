@@ -9,7 +9,16 @@ import { NtfMeta } from '@_types/nft'
 import { userWeb3 } from '@providers/web3'
 
 const Home: NextPage = () => {
-  const { provider } = userWeb3();
+  const { provider, contract } = userWeb3();
+
+  async function getNftInfo() {
+    console.log(await contract!.name());
+    console.log(await contract!.symbol());
+  }
+
+  if (contract) {
+    getNftInfo();
+  }
 
   async function getAccounts() {
     const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
@@ -19,7 +28,6 @@ const Home: NextPage = () => {
   if (provider) {
     getAccounts();
   }
-
 
   return (
     <BaseLayout>
