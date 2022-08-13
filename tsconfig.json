@@ -26,6 +26,12 @@
       "@ui/*": [
         "components/UI/*"
       ],
+      "@providers": [
+        "components/providers"
+      ],
+      "@providers/*": [
+        "components/providers/*"
+      ],
       "@_types/*": [
         "types/*"
       ]

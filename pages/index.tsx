@@ -6,8 +6,21 @@ import React from 'react'
 import { BaseLayout, NftList } from '@ui'
 import nfts from "../content/meta.json"
 import { NtfMeta } from '@_types/nft'
+import { userWeb3 } from '@providers/web3'
 
 const Home: NextPage = () => {
+  const { provider } = userWeb3();
+
+  async function getAccounts() {
+    const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+    console.log(accounts)
+  }
+
+  if (provider) {
+    getAccounts();
+  }
+
+
   return (
     <BaseLayout>
       <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
