@@ -2,6 +2,7 @@
 
 import { Disclosure, Menu } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { useWeb3 } from '@providers/web3'
 import Link from 'next/link'
 import ActiveLink from '../Link'
 
@@ -15,6 +16,11 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
+    const { hooks } = useWeb3();
+    const { data } = hooks.useAccount("");
+
+    console.log(data);
+
     return (
         <Disclosure as="nav" className="bg-gray-800">
             {({ open }) => (

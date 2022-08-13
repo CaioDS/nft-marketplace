@@ -6,28 +6,10 @@ import React from 'react'
 import { BaseLayout, NftList } from '@ui'
 import nfts from "../content/meta.json"
 import { NtfMeta } from '@_types/nft'
-import { userWeb3 } from '@providers/web3'
+import { useWeb3 } from '@providers/web3'
 
 const Home: NextPage = () => {
-  const { provider, contract } = userWeb3();
-
-  async function getNftInfo() {
-    console.log(await contract!.name());
-    console.log(await contract!.symbol());
-  }
-
-  if (contract) {
-    getNftInfo();
-  }
-
-  async function getAccounts() {
-    const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-    console.log(accounts)
-  }
-
-  if (provider) {
-    getAccounts();
-  }
+  const { provider, contract } = useWeb3();
 
   return (
     <BaseLayout>

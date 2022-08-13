@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { createDefaultState, loadContract, Web3State } from "./utils";
 import { ethers } from 'ethers';
+import { setupHooks } from "@hooks/web3/setupHooks";
 
 interface IWe3ContextProps {
     children: ReactNode;
@@ -20,7 +21,8 @@ const Web3Provider = ({ children }: IWe3ContextProps) => {
                 ethereum: window.ethereum,
                 provider,
                 contract,
-                isLoading: false
+                isLoading: false,
+                hooks: setupHooks({ ethereum: window.ethereum, provider, contract })
             });
         }
 
@@ -35,7 +37,7 @@ const Web3Provider = ({ children }: IWe3ContextProps) => {
     );
 }
 
-export function userWeb3() {
+export function useWeb3() {
     return useContext(Web3Context);
 }
 
